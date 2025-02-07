@@ -34,6 +34,7 @@
             this.партнёрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оптовикиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.розничныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.регистрацияПартнёраToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.созданныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выполненыеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +47,8 @@
             this.складToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonSearch = new System.Windows.Forms.Button();
-            this.регистрацияПартнёраToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -108,6 +109,13 @@
             this.розничныеToolStripMenuItem.Size = new System.Drawing.Size(452, 50);
             this.розничныеToolStripMenuItem.Text = "Розничные";
             this.розничныеToolStripMenuItem.Click += new System.EventHandler(this.розничныеToolStripMenuItem_Click);
+            // 
+            // регистрацияПартнёраToolStripMenuItem
+            // 
+            this.регистрацияПартнёраToolStripMenuItem.Name = "регистрацияПартнёраToolStripMenuItem";
+            this.регистрацияПартнёраToolStripMenuItem.Size = new System.Drawing.Size(452, 50);
+            this.регистрацияПартнёраToolStripMenuItem.Text = "Регистрация партнёра";
+            this.регистрацияПартнёраToolStripMenuItem.Click += new System.EventHandler(this.регистрацияПартнёраToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem
             // 
@@ -211,7 +219,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(708, 463);
+            this.dataGridView1.Size = new System.Drawing.Size(813, 463);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -220,20 +228,13 @@
             this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSearch.BackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSearch.Location = new System.Drawing.Point(890, 12);
+            this.buttonSearch.Location = new System.Drawing.Point(912, 14);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(98, 38);
             this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Поиск";
             this.buttonSearch.UseVisualStyleBackColor = false;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
-            // регистрацияПартнёраToolStripMenuItem
-            // 
-            this.регистрацияПартнёраToolStripMenuItem.Name = "регистрацияПартнёраToolStripMenuItem";
-            this.регистрацияПартнёраToolStripMenuItem.Size = new System.Drawing.Size(452, 50);
-            this.регистрацияПартнёраToolStripMenuItem.Text = "Регистрация партнёра";
-            this.регистрацияПартнёраToolStripMenuItem.Click += new System.EventHandler(this.регистрацияПартнёраToolStripMenuItem_Click);
             // 
             // txtSearch
             // 
@@ -244,16 +245,28 @@
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1081, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(34, 35);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.ClientSize = new System.Drawing.Size(1010, 562);
+            this.BackColor = System.Drawing.Color.Bisque;
+            this.ClientSize = new System.Drawing.Size(1115, 562);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "   ";
@@ -288,6 +301,7 @@
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.ToolStripMenuItem регистрацияПартнёраToolStripMenuItem;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button button1;
     }
 }
 
