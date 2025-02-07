@@ -143,10 +143,6 @@ namespace Мастер_пол
 
         private void отмененныеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoadCompletedOrders1();
-        }
-        private void LoadCompletedOrders1()
-        {
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -169,6 +165,7 @@ namespace Мастер_пол
                 }
             }
         }
+        
 
         private void оптовикиToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -303,6 +300,33 @@ namespace Мастер_пол
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void складToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Склад ";
+                    using (var command = new NpgsqlCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+
+
+                            dataGridView1.DataSource = dt;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
+                }
+            }
         }
     }
     

@@ -59,36 +59,65 @@ namespace Мастер_пол
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
-                var cmd = new NpgsqlCommand("INSERT INTO public.Партнеры (Тип, Наименование_Компании, Юридический_Адрес, Физический_Адрес, ИНН, Фамилия_Директора, Имя_Директора, Отчество_Директора, Номер_телефона, email ) VALUES (@type, @name, @legalAddress, @physicalAddress, @inn, @lastName, @firstName, @middleName, @phoneNumber, @email )", conn);
-                cmd.Parameters.AddWithValue("type", txtType.Text);
-                cmd.Parameters.AddWithValue("name", txtCompanyName.Text);
-                cmd.Parameters.AddWithValue("legalAddress", txtLegalAddress.Text);
-                cmd.Parameters.AddWithValue("physicalAddress", txtPhysicalAddress.Text);
-                cmd.Parameters.AddWithValue("inn", txtINN.Text);
-                cmd.Parameters.AddWithValue("lastName", txtDirectorLastName.Text);
-                cmd.Parameters.AddWithValue("firstName", txtDirectorFirstName.Text);
-                cmd.Parameters.AddWithValue("middleName", txtDirectorMiddleName.Text);
-                cmd.Parameters.AddWithValue("phoneNumber", txtPhoneNumber.Text);
-                cmd.Parameters.AddWithValue("email", txtEmail.Text);
 
-                try
+                using (var transaction = conn.BeginTransaction())
                 {
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Партнер успешно добавлен!");
-                    
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка: {ex.Message}");
+                    try
+                    {
+                        // Вставка данных о партнере
+                        var cmd = new NpgsqlCommand("INSERT INTO public.Партнеры (Тип, Наименование_Компании, Юридический_Адрес, Физический_Адрес, ИНН, Фамилия_Директора, Имя_Директора, Отчество_Директора, Номер_телефона, email) VALUES (@type, @name, @legalAddress, @physicalAddress, @inn, @lastName, @firstName, @middleName, @phoneNumber, @email) RETURNING id_Партнера;", conn);
+                        cmd.Parameters.AddWithValue("type", txtType.Text);
+                        cmd.Parameters.AddWithValue("name", txtCompanyName.Text);
+                        cmd.Parameters.AddWithValue("legalAddress", txtLegalAddress.Text);
+                        cmd.Parameters.AddWithValue("physicalAddress", txtPhysicalAddress.Text);
+                        cmd.Parameters.AddWithValue("inn", txtINN.Text);
+                        cmd.Parameters.AddWithValue("lastName", txtDirectorLastName.Text);
+                        cmd.Parameters.AddWithValue("firstName", txtDirectorFirstName.Text);
+                        cmd.Parameters.AddWithValue("middleName", txtDirectorMiddleName.Text);
+                        cmd.Parameters.AddWithValue("phoneNumber", txtPhoneNumber.Text);
+                        cmd.Parameters.AddWithValue("email", txtEmail.Text);
+
+                        // Получаем id_Партнера после вставки
+                        int partnerId = (int)cmd.ExecuteScalar();
+
+                        // Вставка данных о доступе
+                        var accessCmd = new NpgsqlCommand("INSERT INTO public.Доступ (id_Партнера, Логин, Пароль) VALUES (@partnerId, @login, @password);", conn);
+
+                        accessCmd.Parameters.AddWithValue("partnerId", partnerId);
+                        accessCmd.Parameters.AddWithValue("login", txtLogin.Text);
+                        accessCmd.Parameters.AddWithValue("password", txtPassword.Text);
+
+                        accessCmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        MessageBox.Show("Партнер и доступ успешно добавлены!");
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"Ошибка: {ex.Message}");
+                    }
                 }
             }
         }
+
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();
             form1.Show();
             this.Hide();
+        }
+
+        private void RegUser_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
