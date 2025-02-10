@@ -127,6 +127,18 @@
     <Compile Include="RegUser.Designer.cs">
       <DependentUpon>RegUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForn.Designer.cs">
+      <DependentUpon>UserForn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkForm.Designer.cs">
+      <DependentUpon>WorkForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +162,12 @@
     </Compile>
     <EmbeddedResource Include="RegUser.resx">
       <DependentUpon>RegUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForn.resx">
+      <DependentUpon>UserForn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkForm.resx">
+      <DependentUpon>WorkForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
