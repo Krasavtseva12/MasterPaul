@@ -17,13 +17,13 @@ namespace Мастер_пол
         public Form1()
         {
             InitializeComponent();
-            
-            
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void стяжкаИНаливныеПолыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace Мастер_пол
 
         }
 
-        
+
 
         private void ламинатToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -71,7 +71,7 @@ namespace Мастер_пол
 
         }
 
-        
+
 
         private void партнёрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -107,7 +107,7 @@ namespace Мастер_пол
                 }
             }
         }
-        
+
 
         private void созданныеToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -135,17 +135,13 @@ namespace Мастер_пол
                 }
             }
         }
-        
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
         private void отмененныеToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadCompletedOrders1();
-        }
-        private void LoadCompletedOrders1()
         {
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
@@ -170,6 +166,7 @@ namespace Мастер_пол
             }
         }
 
+
         private void оптовикиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadCompletedOrders2();
@@ -189,7 +186,7 @@ namespace Мастер_пол
                             DataTable dt = new DataTable();
                             dt.Load(reader);
 
-                            
+
                             dataGridView1.DataSource = dt;
                         }
                     }
@@ -280,10 +277,10 @@ namespace Мастер_пол
                 }
             }
         }
-       
+
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void создатьЗаявкуToolStripMenuItem_Click(object sender, EventArgs e)
@@ -305,10 +302,37 @@ namespace Мастер_пол
 
         }
 
+        private void складToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Склад ";
+                    using (var command = new NpgsqlCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+
+
+                            dataGridView1.DataSource = dt;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
     }
-    
+
 }

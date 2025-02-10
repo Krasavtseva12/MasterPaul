@@ -109,5 +109,10 @@ namespace Мастер_пол
         {
             txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
