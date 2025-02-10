@@ -205,6 +205,7 @@
             this.складToolStripMenuItem.Name = "складToolStripMenuItem";
             this.складToolStripMenuItem.Size = new System.Drawing.Size(220, 49);
             this.складToolStripMenuItem.Text = "Склад";
+            this.складToolStripMenuItem.Click += new System.EventHandler(this.складToolStripMenuItem_Click_1);
             // 
             // dataGridView1
             // 

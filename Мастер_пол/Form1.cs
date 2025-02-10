@@ -302,7 +302,7 @@ namespace Мастер_пол
 
         }
 
-        private void складToolStripMenuItem_Click(object sender, EventArgs e)
+        private void складToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
@@ -327,11 +327,6 @@ namespace Мастер_пол
                     MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
                 }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 

@@ -110,5 +110,32 @@ namespace Мастер_пол
         {
 
         }
+
+        private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT c.Фамилия, c.Имя, c.Отчество, c.номер_телефона FROM Сотрудники c INNER JOIN Должность d ON c.id_Сотрудника = d.id_Сотрудника WHERE d.Наименование_Должности = 'Менеджер'";
+                    using (var command = new NpgsqlCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+
+
+                            dataGridView1.DataSource = dt;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
+                }
+            }
+        }
     }
 }
