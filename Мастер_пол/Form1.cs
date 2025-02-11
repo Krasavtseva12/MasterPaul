@@ -17,6 +17,9 @@ namespace Мастер_пол
         public Form1()
         {
             InitializeComponent();
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false;
 
 
         }
@@ -107,9 +110,14 @@ namespace Мастер_пол
                 }
             }
         }
-
+        
 
         private void созданныеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadZayavki();
+            
+        }
+        private void LoadZayavki()
         {
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
@@ -123,9 +131,21 @@ namespace Мастер_пол
                         {
                             DataTable dt = new DataTable();
                             dt.Load(reader);
-
-                            // Предположим, у вас есть DataGridView на форме с именем dataGridView1
                             dataGridView1.DataSource = dt;
+                            if (dt.Rows.Count > 0)
+                            {
+                                
+                                comboBoxStatus.Visible = true;
+                                btnUpdateStatus.Visible = true;
+                                label1.Visible = true;
+                            }
+                            else
+                            {
+                                
+                                comboBoxStatus.Visible = false;
+                                btnUpdateStatus.Visible = false;
+                                label1.Visible = false;
+                            }
                         }
                     }
                 }
@@ -171,6 +191,7 @@ namespace Мастер_пол
         {
             LoadCompletedOrders2();
         }
+
         private void LoadCompletedOrders2()
         {
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
@@ -316,9 +337,8 @@ namespace Мастер_пол
                         {
                             DataTable dt = new DataTable();
                             dt.Load(reader);
-
-
                             dataGridView1.DataSource = dt;
+                            
                         }
                     }
                 }
@@ -327,6 +347,59 @@ namespace Мастер_пол
                     MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
                 }
             }
+        }
+
+        private void btnUpdateStatus_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedRowIndex = dataGridView1.SelectedRows[0].Index;
+                int id_Заявки = Convert.ToInt32(dataGridView1.Rows[selectedRowIndex].Cells["id_Заявки"].Value); 
+                string newStatus = comboBoxStatus.SelectedItem.ToString(); 
+
+                using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
+                {
+                    try
+                    {
+                        connection.Open();
+                        string updateQuery = "UPDATE Заявки SET Статус = @newStatus WHERE id_Заявки = @id"; // Предположим, что у вас есть столбец Id
+                        using (var command = new NpgsqlCommand(updateQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@newStatus", newStatus);
+                            command.Parameters.AddWithValue("@id", id_Заявки);
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Статус успешно обновлен.");
+                                LoadZayavki(); // Обновляем данные в DataGridView
+                            }
+                            else
+                            {
+                                MessageBox.Show("Не удалось обновить статус.");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка при обновлении статуса: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите заявку для изменения статуса.");
+            }
+        }
+
+        private void comboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

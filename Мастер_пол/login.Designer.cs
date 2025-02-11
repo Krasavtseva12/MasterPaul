@@ -171,6 +171,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Регистриция";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // login
             // 
@@ -180,7 +181,7 @@
             this.ClientSize = new System.Drawing.Size(987, 563);
             this.Controls.Add(this.panel1);
             this.Name = "login";
-            this.Text = "Мастер пол";
+            this.Text = "𝑀𝒶𝓈𝓉𝑒𝓇 𝓅𝑜𝓁";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

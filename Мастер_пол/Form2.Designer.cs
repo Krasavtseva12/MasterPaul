@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpPrepaymentDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpCreationDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonRegister = new System.Windows.Forms.Button();
@@ -40,8 +42,6 @@
             this.txtIdEmployee = new System.Windows.Forms.TextBox();
             this.txtIdPartner = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtpCreationDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpPrepaymentDate = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +66,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(882, 465);
             this.panel1.TabIndex = 2;
+            // 
+            // dtpPrepaymentDate
+            // 
+            this.dtpPrepaymentDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dtpPrepaymentDate.CalendarTitleBackColor = System.Drawing.Color.LightSkyBlue;
+            this.dtpPrepaymentDate.Location = new System.Drawing.Point(507, 306);
+            this.dtpPrepaymentDate.Name = "dtpPrepaymentDate";
+            this.dtpPrepaymentDate.Size = new System.Drawing.Size(352, 22);
+            this.dtpPrepaymentDate.TabIndex = 19;
+            // 
+            // dtpCreationDate
+            // 
+            this.dtpCreationDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dtpCreationDate.CalendarTitleBackColor = System.Drawing.Color.LightSkyBlue;
+            this.dtpCreationDate.Location = new System.Drawing.Point(507, 255);
+            this.dtpCreationDate.Name = "dtpCreationDate";
+            this.dtpCreationDate.Size = new System.Drawing.Size(352, 22);
+            this.dtpCreationDate.TabIndex = 18;
             // 
             // label3
             // 
@@ -190,24 +208,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "▄︻デСоздание заявки══━一";
             // 
-            // dtpCreationDate
-            // 
-            this.dtpCreationDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dtpCreationDate.CalendarTitleBackColor = System.Drawing.Color.LightSkyBlue;
-            this.dtpCreationDate.Location = new System.Drawing.Point(507, 255);
-            this.dtpCreationDate.Name = "dtpCreationDate";
-            this.dtpCreationDate.Size = new System.Drawing.Size(352, 22);
-            this.dtpCreationDate.TabIndex = 18;
-            // 
-            // dtpPrepaymentDate
-            // 
-            this.dtpPrepaymentDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dtpPrepaymentDate.CalendarTitleBackColor = System.Drawing.Color.LightSkyBlue;
-            this.dtpPrepaymentDate.Location = new System.Drawing.Point(507, 306);
-            this.dtpPrepaymentDate.Name = "dtpPrepaymentDate";
-            this.dtpPrepaymentDate.Size = new System.Drawing.Size(352, 22);
-            this.dtpPrepaymentDate.TabIndex = 19;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -217,7 +217,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "Form2";
-            this.Text = "Мастер пол";
+            this.Text = "𝑀𝒶𝓈𝓉𝑒𝓇 𝓅𝑜𝓁";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

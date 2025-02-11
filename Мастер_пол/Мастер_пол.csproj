@@ -48,6 +48,9 @@
     <Reference Include="Npgsql, Version=8.0.6.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.8.0.6\lib\netstandard2.0\Npgsql.dll</HintPath>
     </Reference>
+    <Reference Include="Npgsql.RawPostgis, Version=4.1.14.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.RawPostgis.4.1.14\lib\net461\Npgsql.RawPostgis.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -133,12 +136,6 @@
     <Compile Include="UserForn.Designer.cs">
       <DependentUpon>UserForn.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WorkForm.Designer.cs">
-      <DependentUpon>WorkForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,9 +162,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserForn.resx">
       <DependentUpon>UserForn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkForm.resx">
-      <DependentUpon>WorkForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

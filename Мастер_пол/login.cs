@@ -90,24 +90,12 @@ namespace Мастер_пол
 
         private void ShowAppropriateForm(string accessLevel)
         {
-            if (accessLevel.Equals("Уровень 1", StringComparison.OrdinalIgnoreCase))
-            {
-                // Логика для уровня 1
-            }
-            else if (accessLevel.Equals("Уровень 2", StringComparison.OrdinalIgnoreCase))
-            {
-                WorkForm workForm = new WorkForm();
-                workForm.Show();
-            }
-            else if (accessLevel.Equals("Уровень 3", StringComparison.OrdinalIgnoreCase))
+            if (accessLevel.Equals("Уровень 3", StringComparison.OrdinalIgnoreCase))
             {
                 var form1 = new Form1();
                 form1.Show();
             }
-            else if (accessLevel.Equals("Уровень 4", StringComparison.OrdinalIgnoreCase))
-            {
-                // Логика для уровня 4
-            }
+    
             else
             {
                 // Логика для других уровней
@@ -126,9 +114,11 @@ namespace Мастер_пол
             txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            RegUser regUser = new RegUser();
+            regUser.Show();
+            this.Hide();
         }
     }
 }

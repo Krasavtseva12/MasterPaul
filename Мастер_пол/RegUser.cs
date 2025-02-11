@@ -119,5 +119,10 @@ namespace Мастер_пол
         {
 
         }
+
+        private void Мастер_пол_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
