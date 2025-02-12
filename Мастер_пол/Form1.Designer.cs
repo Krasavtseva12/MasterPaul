@@ -215,6 +215,7 @@
             this.поставщикиToolStripMenuItem.Name = "поставщикиToolStripMenuItem";
             this.поставщикиToolStripMenuItem.Size = new System.Drawing.Size(220, 49);
             this.поставщикиToolStripMenuItem.Text = "Поставщики";
+            this.поставщикиToolStripMenuItem.Click += new System.EventHandler(this.поставщикиToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 

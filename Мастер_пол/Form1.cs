@@ -28,16 +28,11 @@ namespace Мастер_пол
         {
 
         }
-
-        private void стяжкаИНаливныеПолыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
         private void ламинатToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false;
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -88,6 +83,9 @@ namespace Мастер_пол
 
         private void выполненыеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false;
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -119,6 +117,7 @@ namespace Мастер_пол
         }
         private void LoadZayavki()
         {
+
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -132,21 +131,12 @@ namespace Мастер_пол
                             DataTable dt = new DataTable();
                             dt.Load(reader);
                             dataGridView1.DataSource = dt;
-                            if (dt.Rows.Count > 0)
-                            {
-                                
-                                comboBoxStatus.Visible = true;
-                                btnUpdateStatus.Visible = true;
-                                label1.Visible = true;
-                            }
-                            else
-                            {
-                                
-                                comboBoxStatus.Visible = false;
-                                btnUpdateStatus.Visible = false;
-                                label1.Visible = false;
-                            }
+                            comboBoxStatus.Visible = true;
+                            btnUpdateStatus.Visible = true;
+                            label1.Visible = true;
+                            
                         }
+
                     }
                 }
                 catch (Exception ex)
@@ -154,6 +144,7 @@ namespace Мастер_пол
                     MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
                 }
             }
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -163,6 +154,9 @@ namespace Мастер_пол
 
         private void отмененныеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false;
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -194,6 +188,9 @@ namespace Мастер_пол
 
         private void LoadCompletedOrders2()
         {
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false;
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -221,6 +218,9 @@ namespace Мастер_пол
 
         private void розничныеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false;
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -247,6 +247,9 @@ namespace Мастер_пол
         }
         private void ковролинToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false;
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -274,6 +277,9 @@ namespace Мастер_пол
 
         private void паркетнаяДоскаToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false; 
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -325,6 +331,9 @@ namespace Мастер_пол
 
         private void складToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false;
             using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
             {
                 try
@@ -400,6 +409,35 @@ namespace Мастер_пол
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void поставщикиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comboBoxStatus.Visible = false;
+            btnUpdateStatus.Visible = false;
+            label1.Visible = false;
+            using (var connection = new NpgsqlConnection("Host=localhost; Port=5433; Username=postgres; Password=qwerty; Database=Мастер_пол"))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Поставщики";
+                    using (var command = new NpgsqlCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Load(reader);
+                            dataGridView1.DataSource = dt;
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
+                }
+            }
         }
     }
 
