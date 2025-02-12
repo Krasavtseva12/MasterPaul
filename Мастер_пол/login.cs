@@ -92,8 +92,8 @@ namespace Мастер_пол
         {
             if (accessLevel.Equals("Уровень 3", StringComparison.OrdinalIgnoreCase))
             {
-                var form1 = new Form1();
-                form1.Show();
+                Form1 form = new Form1();
+                form.Show();
             }
     
             else
